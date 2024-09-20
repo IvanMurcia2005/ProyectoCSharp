@@ -4,8 +4,8 @@
     "\\source",
     "\\source\\repos",
     "\\source\\repos\\ModuleSecurity",
-    "\\source\\repos\\ModuleSecurity\\Diagram"
+    "\\source\\repos\\ModuleSecurity\\Data"
   ],
-  "SelectedNode": "\\source\\repos\\ModuleSecurity\\Diagram\\DBModel.edmx",
+  "SelectedNode": "\\source\\repos\\ModuleSecurity\\ModuleSecurityC_Sharp.sln",
   "PreviewInSolutionExplorer": false
 }

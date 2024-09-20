@@ -1,17 +1,13 @@
 ﻿using Entity.Context;
 using Entity.Model.Security;
-using Entity;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Entity.Dto;
+using Data.Interface;
 
 namespace Data.Implements
 {
-    internal class PersonData
+    public class PersonData : IPersonData
     {
         private readonly ApplicationDBContext context;
         protected readonly IConfiguration configuration;
@@ -29,7 +25,7 @@ namespace Data.Implements
             {
                 throw new Exception("Registro no encontrado");
             }
-            entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
+            entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
             context.Persons.Update(entity);
             await context.SaveChangesAsync();
         }
@@ -75,6 +71,21 @@ namespace Data.Implements
         {
             var sql = @"SELECT * FROM Person ORDER BY Id ASC";
             return await this.context.QueryAsync<Person>(sql);
+        }
+
+        public async Task<IEnumerable<Person>> SelectAll()
+        {
+            var sql = @"SELECT * FROM Person  WHERE DeletedAt IS NULL AND state = 1
+            ORDER BY Id ASC";
+
+            try
+            {
+                return await this.context.QueryAsync<Person>(sql);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error al ejecutar la consulta ", ex);
+            }
         }
     }
 }

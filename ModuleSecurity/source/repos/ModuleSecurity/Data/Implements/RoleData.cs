@@ -1,6 +1,6 @@
 ﻿using Data.Interface;
-using Entity;
 using Entity.Context;
+using Entity.Dto;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +25,7 @@ namespace Data.Implements
             {
                 throw new Exception("Registro no encontrado");
             }
-            entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
+            entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
             context.Roles.Update(entity);
             await context.SaveChangesAsync();
         }
@@ -73,9 +73,24 @@ namespace Data.Implements
             return await this.context.QueryAsync<Role>(sql);
         }
 
-        public Task<IEnumerable<DataSelectDto>> GetDataSelects()
+        /*public Task<IEnumerable<DataSelectDto>> GetDataSelects()
         {
             throw new NotImplementedException();
+        }*/
+
+        public async Task<IEnumerable<Role>> SelectAll()
+        {
+            var sql = @"SELECT * FROM Role  WHERE DeletedAt IS NULL AND state = 1
+            ORDER BY Id ASC";
+
+            try
+            {
+                return await this.context.QueryAsync<Role>(sql);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error al ejecutar la consulta ", ex);
+            }
         }
     }
 }

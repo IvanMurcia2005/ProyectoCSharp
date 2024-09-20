@@ -3,10 +3,12 @@ using Entity.Model.Security;
 using Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Entity.Dto;
+using Data.Interface;
 
 namespace Data.Implements
 {
-    internal class ViewData
+    public class ViewData : IViewData
     {
         private readonly ApplicationDBContext context;
         protected readonly IConfiguration configuration;
@@ -24,7 +26,7 @@ namespace Data.Implements
             {
                 throw new Exception("Registro no encontrado");
             }
-            entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
+            entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
             context.Views.Update(entity);
             await context.SaveChangesAsync();
         }
@@ -68,8 +70,23 @@ namespace Data.Implements
 
         public async Task<IEnumerable<View>> GetAll()
         {
-            var sql = @"SELECT * FROM Role ORDER BY Id ASC";
+            var sql = @"SELECT * FROM View ORDER BY Id ASC";
             return await this.context.QueryAsync<View>(sql);
+        }
+
+        public async Task<IEnumerable<View>> SelectAll()
+        {
+            var sql = @"SELECT * FROM View  WHERE DeletedAt IS NULL AND state = 1
+            ORDER BY Id ASC";
+
+            try
+            {
+                return await this.context.QueryAsync<View>(sql);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error al ejecutar la consulta ", ex);
+            }
         }
     }
 }

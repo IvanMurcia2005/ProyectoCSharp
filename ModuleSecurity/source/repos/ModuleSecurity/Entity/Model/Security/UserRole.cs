@@ -10,11 +10,12 @@ namespace Entity.Model.Security
 {
     public class UserRole
     {
-        [Key]
+        /*[Key]*/
         public int Id { get; set; }
-        public DateTime CreateAt { get; set; }
-        public DateTime? UpdateAt { get; set; }
-        public DateTime? DeleteAt { get; set; }
+        public string Name { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public DateTime DeletedAt { get; set; }
         public bool State { get; set; }
 
         // Foreign keys
@@ -25,12 +26,5 @@ namespace Entity.Model.Security
         public int RoleId { get; set; }
         [ForeignKey("RoleId")]
         public virtual Role Role { get; set; }
-    }
-}
-
-namespace Entity
-{
-    public class DataSelectDto
-    {
     }
 }

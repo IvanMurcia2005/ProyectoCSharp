@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ModuleSecurity\\source",
+    "\\ModuleSecurity\\source\\repos",
+    "\\ModuleSecurity\\source\\repos\\ModuleSecurity",
+    "\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Business",
+    "\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Business\\bin",
+    "\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Business\\bin\\Debug",
+    "\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Business\\bin\\Debug\\net8.0",
+    "\\TrabajoExposicion",
+    "\\TrabajoExposicion\\TrabajoExposicion"
+  ],
+  "SelectedNode": "\\TrabajoExposicion\\TrabajoExposicion\\VegetableStoreTest.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -24,6 +24,13 @@ namespace Entity.Context
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
+
+           /*modelBuilder.Entity<Location>().HasData(
+           new Location { Id = 1, City = "New York", State = "NY", Country = "USA" },
+           new Location { Id = 2, City = "Los Angeles", State = "CA", Country = "USA" },
+           new Location { Id = 3, City = "Toronto", State = "ON", Country = "Canada" },
+           new Location { Id = 4, City = "London", State = "ENG", Country = "UK" }
+            );*/
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -88,6 +95,7 @@ namespace Entity.Context
         public DbSet<RoleView> RoleViews => Set<RoleView>();
         public DbSet<UserRole> UserRoles => Set<UserRole>();
         public DbSet<View> Views => Set<View>();
+        public DbSet<City> City => Set<City>();
 
 
         public object Module { get; set; }

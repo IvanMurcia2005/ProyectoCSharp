@@ -4,10 +4,11 @@ using Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Data.Interface;
+using Entity.Dto;
 
 namespace Data.Implements
 {
-    internal class UserData : IUserData
+    public class UserData : IUserData
     {
         private readonly ApplicationDBContext context;
         protected readonly IConfiguration configuration;
@@ -25,7 +26,7 @@ namespace Data.Implements
             {
                 throw new Exception("Registro no encontrado");
             }
-            entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
+            entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
             context.Users.Update(entity);
             await context.SaveChangesAsync();
         }
@@ -64,18 +65,33 @@ namespace Data.Implements
 
         public async Task<User> GetByName(string username)
         {
-            return await this.context.Users.AsNoTracking().Where(item => item.Username == username).FirstOrDefaultAsync();
+            return await this.context.Users.AsNoTracking().Where(item => item.UserName == username).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            var sql = @"SELECT * FROM Role ORDER BY Id ASC";
+            var sql = @"SELECT * FROM User ORDER BY Id ASC";
             return await this.context.QueryAsync<User>(sql);
         }
 
         public Task<IEnumerable<DataSelectDto>> GetDataSelects()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<User>> SelectAll()
+        {
+            var sql = @"SELECT * FROM User  WHERE DeletedAt IS NULL AND state = 1
+            ORDER BY Id ASC";
+
+            try
+            {
+                return await this.context.QueryAsync<User>(sql);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error al ejecutar la consulta ", ex);
+            }
         }
     }
 }

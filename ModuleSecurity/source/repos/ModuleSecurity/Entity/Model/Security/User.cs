@@ -10,13 +10,16 @@ namespace Entity.Model.Security
 {
     public class User
     {
-        [Key]
+        /*[Key]*/
+
         public int Id { get; set; }
-        public string Username { get; set; }
+        public string UserName { get; set; }
         public string Password { get; set; }
-        public DateTime CreateAt { get; set; }
-        public DateTime? UpdateAt { get; set; }
-        public DateTime? DeleteAt { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public DateTime DeletedAt { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
         public bool State { get; set; }
 
         // Foreign key

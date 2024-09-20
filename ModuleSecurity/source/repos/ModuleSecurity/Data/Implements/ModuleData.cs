@@ -1,6 +1,5 @@
-﻿
-using Data.Interface;
-using Entity;
+﻿using Data.Interface;
+using Entity.Dto;
 using Entity.Context;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +25,7 @@ namespace Data.Implements
             {
                 throw new Exception("Registro no encontrado");
             }
-            entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
+            entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
             context.Update(entity);
             await context.SaveChangesAsync();
         }
@@ -73,7 +72,20 @@ namespace Data.Implements
             var sql = @"SELECT * FROM Module ORDER BY Id ASC";
             return await this.context.QueryAsync<Module>(sql);
         }
+
+        public async Task<IEnumerable<Module>> SelectAll()
+        {
+            var sql = @"SELECT * FROM Module  WHERE DeletedAt IS NULL AND state = 1
+                    ORDER BY Id ASC";
+
+            try
+            {
+                return await this.context.QueryAsync<Module>(sql);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error al ejecutar la consulta ", ex);
+            }
+        }
     }
-
-
 }

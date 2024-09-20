@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Entity\\Entity.csproj": {}
+    "E:\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Entity\\Entity.csproj": {}
   },
   "projects": {
-    "D:\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Entity\\Entity.csproj": {
+    "E:\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Entity\\Entity.csproj",
+        "projectUniqueName": "E:\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "D:\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Entity\\Entity.csproj",
-        "packagesPath": "C:\\Users\\Miguel\\.nuget\\packages\\",
-        "outputPath": "D:\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Entity\\obj\\",
+        "projectPath": "E:\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Entity\\Entity.csproj",
+        "packagesPath": "C:\\Users\\manuel\\.nuget\\packages\\",
+        "outputPath": "E:\\ModuleSecurity\\source\\repos\\ModuleSecurity\\Entity\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Miguel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\manuel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -52,23 +56,27 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[8.0.8, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.5, )"
             }
           },
           "imports": [
@@ -87,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

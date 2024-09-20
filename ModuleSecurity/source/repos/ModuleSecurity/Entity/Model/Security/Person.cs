@@ -9,7 +9,7 @@ namespace Entity.Model.Security
 {
     public class Person
     {
-        [Key]
+        /*[Key]*/
         public int Id { get; set; }
         public string First_name { get; set; }
         public string Last_name { get; set; }
@@ -17,15 +17,15 @@ namespace Entity.Model.Security
         public string Adress { get; set; }
         public string Type_document { get; set; }
         public string Document { get; set; }
-        public DateTime Birth_of_date { get; set; }
-        public DateTime CreateAt { get; set; }
-        public DateTime? UpdateAt { get; set; }
-        public DateTime? DeleteAt { get; set; }
-        public string Phone { get; set; }
+        public string Birth_of_date { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public DateTime DeletedAt { get; set; }
+        public int Phonenumber { get; set; }
         public bool State { get; set; }
 
         // Navigation property
-        public virtual ICollection<User> Users { get; set; }
-        public string Description { get; set; }
+        /*public virtual ICollection<User> Users { get; set; }
+        public string Description { get; set; }*/
     }
 }

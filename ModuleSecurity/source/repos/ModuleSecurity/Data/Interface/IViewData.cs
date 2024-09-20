@@ -1,14 +1,19 @@
-﻿using Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Entity.Dto;
+using Entity.Model.Security;
 
 namespace Data.Interface
 {
-    internal interface IViewData
+    public interface IViewData
     {
-        Task<IEnumerable<DataSelectDto>> GetDataSelects();
+        Task Delete(int id);
+        Task<View> GetById(int id);
+        Task<View> Save(View entity);
+        Task Update(View entity);
+        Task<View> GetByName(string name);
+        Task<IEnumerable<View>> GetAll();
+        Task<IEnumerable<DataSelectDto>> GetAllSelect();
+        public Task<IEnumerable<View>> SelectAll();
     }
 }
